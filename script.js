@@ -22,6 +22,22 @@ for (let i = 0; i < btns.length; i++) {
     });
 }
 
+//share button
+const shareBtns = document.querySelectorAll('.share-btn');
+shareBtns.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const product = e.target.closest('.store-product');
+    const title = product.querySelector('h2').textContent;
+    const url = product.querySelector('a').href;
+    navigator.share({
+      title: title,
+      text: `Check out this resource: ${title}`,
+      url: url
+    });
+  });
+});
+
+
 // SEARCH FILTER
 const search = document.getElementById("search");
 const productName = document.querySelectorAll(".product-details h2");
